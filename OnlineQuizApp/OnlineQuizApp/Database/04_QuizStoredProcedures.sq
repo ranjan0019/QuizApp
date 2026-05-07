@@ -1,0 +1,48 @@
+﻿USE OnlineQuizApp_DB;
+GO
+
+IF OBJECT_ID('sp_AddQuiz', 'P') IS NOT NULL
+    DROP PROCEDURE sp_AddQuiz;
+GO
+
+CREATE PROCEDURE sp_AddQuiz
+    @Title NVARCHAR(200),
+    @Description NVARCHAR(500),
+    @TotalQuestions INT,
+    @TotalMarks INT,
+    @CreatedBy INT
+AS
+BEGIN
+    INSERT INTO Quizzes (Title, Description, TotalQuestions, TotalMarks, CreatedBy)
+    VALUES (@Title, @Description, @TotalQuestions, @TotalMarks, @CreatedBy);
+
+    SELECT SCOPE_IDENTITY();
+END
+GO
+
+IF OBJECT_ID('sp_GetAllQuizzes', 'P') IS NOT NULL
+    DROP PROCEDURE sp_GetAllQuizzes;
+GO
+
+CREATE PROCEDURE sp_GetAllQuizzes
+AS
+BEGIN
+    SELECT QuizId, Title, Description, TotalQuestions, TotalMarks, CreatedBy, CreatedDate
+    FROM Quizzes
+    ORDER BY QuizId DESC;
+END
+GO
+
+IF OBJECT_ID('sp_GetQuizById', 'P') IS NOT NULL
+    DROP PROCEDURE sp_GetQuizById;
+GO
+
+CREATE PROCEDURE sp_GetQuizById
+    @QuizId INT
+AS
+BEGIN
+    SELECT QuizId, Title, Description, TotalQuestions, TotalMarks, CreatedBy, CreatedDate
+    FROM Quizzes
+    WHERE QuizId = @QuizId;
+END
+GO
