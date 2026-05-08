@@ -1,8 +1,8 @@
-Quiz App 🎯
+Quiz App 🎯///////////
 
 A feature-rich Quiz Application developed using C# .NET and SQL Server Management Studio (SSMS).
 This application provides an interactive platform for users to participate in quizzes, improve knowledge, and track their performance efficiently.
-
+/////////////////
 🚀 Features
 🔐 User Login & Registration
 📚 Multiple Quiz Categories
